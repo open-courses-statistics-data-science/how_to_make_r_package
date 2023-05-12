@@ -17,7 +17,6 @@ We aim to create an R package, "regexcite", which contains a few simple function
   * function documentation
   * unit testing
   * package documentation
-* if time allows, we will discuss setting up continuous integration testing via Github Actions
 
 ## Instructions
 
@@ -28,17 +27,23 @@ We aim to create an R package, "regexcite", which contains a few simple function
 
 ### Create package outline
 
-4. Call `create_package("regexcite")` which will initialise a package in a directory
+1. Call `create_package("regexcite")` which will initialise a package in a directory
 
-* this will likely open up a new RStudio session so you may need to call `library(devtools)` again
-* notice that there now exists various files in the directory:
-  * `DESCRIPTION` which is an editable file containing package metadata, which we will later edit
-  * `.Rbuildignore` lists files that we need to have around but that should not be included when building the R package from source
-  * `NAMESPACE` declares the functions your package exports for external use and the external functions your package imports from other packages. Generally, this should not be edited by hand
-  * the `R/` directory is the “business end” of your package. It will soon contain `.R` files with function definitions.
+   * this will likely open up a new RStudio session so you may need to call `library(devtools)` again
 
-5. Make our package also a Git repository, with `use_git()`
-6. Create `x <- "alfa,bravo,charlie,delta"`. Suppose we want to write a function that splits this into a vector of individual words:
+   * notice that there now exists various files in the directory:
+
+     * `DESCRIPTION` which is an editable file containing package metadata, which we will later edit
+
+     * `.Rbuildignore` lists files that we need to have around but that should not be included when building the R package from source
+
+     * `NAMESPACE` declares the functions your package exports for external use and the external functions your package imports from other packages. Generally, this should not be edited by hand
+
+     * the `R/` directory is the “business end” of your package. It will soon contain `.R` files with function definitions.
+
+2. Make our package also a Git repository, with `use_git()`
+
+3. Create `x <- "alfa,bravo,charlie,delta"`. Suppose we want to write a function that splits this into a vector of individual words:
    * this can be done with `unlist(strsplit(x, split=","))`
 
 ### Create basic function
@@ -55,66 +60,111 @@ We aim to create an R package, "regexcite", which contains a few simple function
      }
      ```
 
-8. Test drive your function by calling `load_all()` which should make the function available for you to play with
+2. Test drive your function by calling `load_all()` which should make the function available for you to play with
+
    * when developing an R package, we don't manually instantiate functions typically
+
    * `load_all` provides a more robust way to test functions as it simulates what a user would experience by loading the package
-9. Check that the package as a whole works by calling `check()`
+
+3. Check that the package as a whole works by calling `check()`
+
    * this runs `R CMD check`, which is executed in the shell, and is the gold standard for checking that an R package is in full working order
-10. Note that `check` will have raised a warning about `Non-standard license specification`
-    * we will address this soon
+
+4. Note that `check` will have raised a warning about `Non-standard license specification`
+   * we will address this soon
 
 ### Add descriptive info for your package
 
-8. Open up the `DESCRIPTION` file:
+1. Open up the `DESCRIPTION` file:
+
    * make yourself the author; if you don’t have an ORCID, you can omit the `comment = ...` portion
+
    * add some descriptive text to the `Title` and `Description` fields
-9. Add an MIT license (see lecture slides for intro to licenses) via `use_mit_license()`
+
+2. Add an MIT license (see lecture slides for intro to licenses) via `use_mit_license()`
    * adds two license files to the folder:
      * `LICENSE` which contains the year and copywright owners
      * `LICENSE.md` which holds the full license info
 
 ### Create function documentation
 
-8. Create documentation for your `strsplit1` function:
+1. Create documentation for your `strsplit1` function:
 
    * open again your `R/strsplit1.R` file and place your cursor within the `strsplit1` function body
+
    * do *Code > Insert roxygen skeleton*, which should create boilerplate code above the function
+
    * add a title
+
    * describe the inputs and the return value
+
    * include an example
 
-9. Trigger creation of the documentation via `document()`
+2. Trigger creation of the documentation via `document()`
 
    * this will create a folder `man/` which houses automatically built documentation for your package
 
-10. Test your documentation using `?strsplit1`
+3. Test your documentation using `?strsplit1`
 
-11. Examine the `NAMESPACE` file. You will see that `document()` added *export(strsplit1)* there.
+4. Examine the `NAMESPACE` file. You will see that `document()` added *export(strsplit1)* there.
 
-    * this makes the function available to users of the package
+   * this makes the function available to users of the package
 
-    * note, you may want internal functions in your package which you don't make available to users
+   * note, you may want internal functions in your package which you don't make available to users
 
-12. Double check that your package is all ok via `check()`
+5. Double check that your package is all ok via `check()`
 
-13. Now that we have a package that works, we can install it via `install()`
+6. Now that we have a package that works, we can install it via `install()`
 
-14. Restart your R session and do `library(regexcite)` to load the package
+7. Restart your R session and do `library(regexcite)` to load the package
 
-15. Test the package using:
+8. Test the package using:
 
-    ```R
-    x <- "alfa,bravo,charlie,delta"
-    strsplit1(x, split = ",")
-    ```
+   ```R
+   x <- "alfa,bravo,charlie,delta"
+   strsplit1(x, split = ",")
+   ```
 
 ### Add unit tests
 
-8. We've tested our function `strsplit1` informally, but we would like to do so systematically to ensure that: the function works as intended across more general examples; and the function continues to work when we develop the package. To do so, we are going to create unit tests. A first step in this process is to call `use_testthat()`.
-9. Call `use_test("strsplit1")` to create a file which contains an example test. Try highlighting this code and running it interactively which will likely require another call to `load_all()` to make the `test_that()` function available.
-10. In developing a package, you will more typically do `test()` to run all of your unit tests. Try this.
-    * Note that tests are also run when `check()` is run
-11. Write a `test_that` function which checks that `strsplit1` can split a string with comma separation
-12. Write a different test that checks if `strsplit1` can split a string with hyphen separation
-13. Try `test()` again to check that all unit tests pass
+1. We've tested our function `strsplit1` informally, but we would like to do so systematically to ensure that: the function works as intended across more general examples; and the function continues to work when we develop the package. To do so, we are going to create unit tests. A first step in this process is to call `use_testthat()`.
+
+2. Call `use_test("strsplit1")` to create a file which contains an example test. Try highlighting this code and running it interactively which will likely require another call to `load_all()` to make the `test_that()` function available.
+
+3. In developing a package, you will more typically do `test()` to run all of your unit tests. Try this.
+   * Note that tests are also run when `check()` is run
+
+4. Write a `test_that` function which checks that `strsplit1` can split a string with comma separation
+
+5. Write a different test that checks if `strsplit1` can split a string with hyphen separation
+
+6. Try `test()` again to check that all unit tests pass
+
+### Including dependencies
+
+Suppose we want to use the `tibble` function from `dplyr` to store our split string in a dataframe with a column 'order' which specifies the position of each element in the string and another column 'string' which contains the splitted string. To do this, we will create a function called  `string_df(x, split)` that internally calls `tibble`.
+
+1. Call `use_package("dplyr")` and note that this modifies the `DESCRIPTION` file to import this package for use
+
+2. Call `use_r("string_df")` to create a blank `.R` file
+
+3. Insert the following into the file:
+
+```
+string_df <- function(x, split) {
+  x <- strsplit1(x, split)
+  dplyr::tibble(
+    order=seq_along(x),
+    string=x
+  )
+}
+```
+
+4. Create documentation for this function.
+
+5. Call `use_test()` from within the R file to create a test file, and add a unit test for `string_df`
+
+6. Check that all is ok with the package (and the tests) by running `check()`
+
+7. Try installing your package and running its functionality in a fresh R session
 
