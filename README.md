@@ -1,6 +1,6 @@
 # How to create an R package
 
-This short course describes how to make an R package. It broadly follow's Chapter 2 of the [online version](https://r-pkgs.org/) of "R Packages (2nd edition)", by Hadley Wickham and Jennifer Bryan.
+This short course describes how to make an R package. It broadly follows Chapter 2 of the [online version](https://r-pkgs.org/) of "R Packages (2nd edition)", by Hadley Wickham and Jennifer Bryan.
 
 Requirements:
 
