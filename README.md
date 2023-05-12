@@ -168,3 +168,10 @@ string_df <- function(x, split) {
 
 7. Try installing your package and running its functionality in a fresh R session
 
+### (Optional) Put your package up on Github
+
+Putting your package up on Github (if the repo is public) allows others to easily install and use your code.
+
+* The `use_github()` function can automate this but note that this may require setting up Github on your side.
+* The `use_readme_rmd()` creates description of the 
+
