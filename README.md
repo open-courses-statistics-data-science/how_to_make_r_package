@@ -17,6 +17,7 @@ We aim to create an R package, "regexcite", which contains a few simple function
   * function documentation
   * unit testing
   * package documentation
+  * how to include package dependencies
 
 ## Instructions
 
