@@ -69,7 +69,7 @@ We aim to create an R package, "regexcite", which contains a few simple function
 
 3. Check that the package as a whole works by calling `check()`
 
-   * this runs `R CMD check`, which is executed in the shell, and is the gold standard for checking that an R package is in full working order
+   * this runs `R CMD check`, which is executed in the shell and is the gold standard for checking that an R package is in full working order
 
 4. Note that `check` will have raised a warning about `Non-standard license specification`
    * we will address this soon
@@ -107,7 +107,7 @@ We aim to create an R package, "regexcite", which contains a few simple function
 
 3. Test your documentation using `?strsplit1`
 
-4. Examine the `NAMESPACE` file. You will see that `document()` added *export(strsplit1)* there.
+4. Examine the `NAMESPACE` file. You will see that `document()` added *export(strsplit1)* there
 
    * this makes the function available to users of the package
 
@@ -132,7 +132,7 @@ We aim to create an R package, "regexcite", which contains a few simple function
 
 2. Call `use_test("strsplit1")` to create a file which contains an example test. Try highlighting this code and running it interactively which will likely require another call to `load_all()` to make the `test_that()` function available.
 
-3. In developing a package, you will more typically do `test()` to run all of your unit tests. Try this.
+3. In developing a package, you will more typically do `test()` to run all of your unit tests. Try this
    * Note that tests are also run when `check()` is run
 
 4. Write a `test_that` function which checks that `strsplit1` can split a string with comma separation
