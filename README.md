@@ -24,6 +24,8 @@ Key to the whole process of package development are the following commands.
 
 ![Wickham's workflows](figures/workflow_wickham.png)
 
+This figure has been taken from "R Packages (2nd edition)", by Hadley Wickham and Jennifer Bryan.
+
 ## Instructions
 
 1. Create a fresh folder where you intend to house an R package
