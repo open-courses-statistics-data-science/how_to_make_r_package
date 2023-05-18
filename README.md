@@ -19,6 +19,8 @@ We aim to create an R package, "regexcite", which contains a few simple function
   * package documentation
   * how to include package dependencies
 
+There's a short presentation [here](presentation/how_to_make_an_R_package.pdf), which explains a little more about R packages and software licenses.
+
 ## Key workflows
 Key to the whole process of package development are the following commands.
 
