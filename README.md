@@ -19,6 +19,11 @@ We aim to create an R package, "regexcite", which contains a few simple function
   * package documentation
   * how to include package dependencies
 
+## Key workflows
+Key to the whole process of package development are the following commands.
+
+![Wickham's workflows](figures/workflow_wickham.png)
+
 ## Instructions
 
 1. Create a fresh folder where you intend to house an R package
